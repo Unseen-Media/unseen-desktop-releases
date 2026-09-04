@@ -1,7 +1,7 @@
 {
-  "version": "2.5.7",
-  "notes": "- **The play/pause button stays crisp.** The icon on the white play/pause\n  button no longer washes out to white when you hover over it \u2014 it stays clear\n  and readable.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.7/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.7/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.7/UnseenMedia-linux-amd64.deb"
+  "version": "2.5.8",
+  "notes": "- **Fixed a crash when skipping with the arrow keys.** Tapping the left or\n  right arrow quickly to jump back and forth no longer risks crashing the\n  player \u2014 a fast burst of taps is now folded into a single smooth jump, so the\n  video lands where you meant it to.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.8/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.8/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.8/UnseenMedia-linux-amd64.deb"
 }
