@@ -1,7 +1,7 @@
 {
-  "version": "2.5.10",
-  "notes": "- **Arrow past intros and outros.** With auto-skip on, tapping the left/right\n  arrows into an intro or outro now jumps over it, just like it does during\n  normal playback. Clicking the seek bar inside one still lets you watch it, if\n  that's what you want.\n- **Fixed an error when rating a series.** Scoring a series and closing the\n  ratings window could throw an error a moment later \u2014 that's fixed.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.10/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.10/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.5.10/UnseenMedia-linux-amd64.deb"
+  "version": "2.6.0",
+  "notes": "- **Episode lengths on the thumbnails.** Each episode in a series now shows how\n  long it is \u2014 \"24m\", \"1h38m\" \u2014 in the corner of its thumbnail, so you can see\n  at a glance what you're about to start. This works for everything, including\n  specials, trailers and movies.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.0/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.0/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.0/UnseenMedia-linux-amd64.deb"
 }
