@@ -1,7 +1,7 @@
 {
-  "version": "2.6.3",
-  "notes": "- **Arrow-key skipping actually moves again.** A recent change could leave the\n  arrows stuck repeating the same spot \u2014 skipping now always jumps by 5\n  seconds.\n- **A deeper fix for the arrow-skip crash.** How the player tracks playback\n  position was reworked so that rapid skipping no longer runs through the part\n  of the video engine that was crashing. Combined with the rate limit from the\n  last update, spamming the arrows should now be safe.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.3/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.3/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.3/UnseenMedia-linux-amd64.deb"
+  "version": "2.6.4",
+  "notes": "- **More work on the rare skip crash.** Narrowed down what was still crashing\n  the player when skipping quickly on some machines and removed that path too.\n  If you could crash it by tapping the arrows a few times, please try again.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-linux-amd64.deb"
 }
