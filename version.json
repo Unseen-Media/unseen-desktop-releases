@@ -1,7 +1,7 @@
 {
-  "version": "2.6.4",
-  "notes": "- **More work on the rare skip crash.** Narrowed down what was still crashing\n  the player when skipping quickly on some machines and removed that path too.\n  If you could crash it by tapping the arrows a few times, please try again.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.4/UnseenMedia-linux-amd64.deb"
+  "version": "2.6.5",
+  "notes": "- **The skip crash should finally be gone.** We traced the crash when skipping\n  quickly with the arrows to the media-playback engine the app bundles \u2014 the\n  build it shipped with had a bug that crashed on rapid seeks. Rolled it back\n  to the version that's been rock-solid for months. Please try mashing the\n  arrows again.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.5/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.5/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.5/UnseenMedia-linux-amd64.deb"
 }
