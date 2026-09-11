@@ -3,7 +3,7 @@
 # system updater. To stop the package from managing this file, set
 # manage_apt_repo="false" in /etc/default/unseen-media.
 # https://github.com/Unseen-Media/unseen-desktop-releases#readme
-# (An identical copy lives in unseen-desktop/packaging/ — change both.)
+# (Identical copies live in unseen-desktop/packaging/ and unseen-desktop-releases/ — change both.)
 Types: deb
 URIs: https://github.com/Unseen-Media/unseen-desktop-releases/releases/download
 Suites: apt/
