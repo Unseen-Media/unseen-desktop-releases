@@ -1,8 +1,17 @@
 # Maintain the APT repository that lives on the release tagged `apt`.
 #
-# Trigger: a desktop release (v…) is published — or run it by hand
-# (Actions → APT repository → Run workflow), optionally naming a tag to
-# (re)ingest; blank means the newest published desktop release.
+# Triggers, in the order they matter:
+#   push of version.json   the Release workflow's finalize job commits the
+#                          feed after every asset is uploaded (the normal
+#                          draft=false release) — this is what ingests a new
+#                          version. The release object itself is created
+#                          *before* the .deb exists, so the `release` event
+#                          below usually finds no .deb yet and skips.
+#   release published      a draft published by hand on GitHub (finalize is
+#                          skipped for drafts, so no feed commit follows).
+#   workflow_dispatch      by hand (Actions → APT repository → Run workflow),
+#                          optionally naming a tag to (re)ingest; blank means
+#                          the newest published desktop release.
 #
 # What the `apt` release holds:
 #   unseen-media_<version>_amd64.deb    the newest KEEP versions (older ones pruned)
@@ -28,6 +37,9 @@ name: APT repository
 on:
   release:
     types: [published]
+  push:
+    branches: [main]
+    paths: [version.json]
   workflow_dispatch:
     inputs:
       tag:
@@ -65,12 +77,16 @@ jobs:
       tag: ${{ steps.pick.outputs.tag }}
       skip: ${{ steps.pick.outputs.skip }}
     steps:
+      - uses: actions/checkout@v4   # version.json, for the push trigger
       - id: pick
         env:
           EVENT_TAG: ${{ github.event.release.tag_name }}
           INPUT_TAG: ${{ inputs.tag }}
         run: |
           tag="${INPUT_TAG:-$EVENT_TAG}"
+          if [ "$GITHUB_EVENT_NAME" = "push" ]; then
+            tag="v$(jq -r .version version.json)"   # the feed finalize just committed
+          fi
           if [ -z "$tag" ]; then
             tag=$(gh release list -R "$GITHUB_REPOSITORY" --exclude-drafts --exclude-pre-releases \
                     --json tagName --jq '[.[] | select(.tagName | test("^v[0-9]"))][0].tagName')
@@ -83,7 +99,7 @@ jobs:
           info=$(gh release view "$tag" -R "$GITHUB_REPOSITORY" --json isDraft,assets)
           [ "$(jq -r .isDraft <<<"$info")" = "false" ] || skip "$tag is a draft — nothing to do"
           jq -e --arg a "$DEB_ASSET" '.assets[] | select(.name == $a)' <<<"$info" >/dev/null \
-            || skip "$tag has no $DEB_ASSET — nothing to do"
+            || skip "$tag has no $DEB_ASSET yet — nothing to do (a running Release uploads it later; the version.json push ingests it then)"
           echo "tag=$tag" >> "$GITHUB_OUTPUT"
           echo "skip=false" >> "$GITHUB_OUTPUT"
           echo "ingesting $tag"
