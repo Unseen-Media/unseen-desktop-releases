@@ -1,0 +1,209 @@
+# Maintain the APT repository that lives on the release tagged `apt`.
+#
+# Trigger: a desktop release (v…) is published — or run it by hand
+# (Actions → APT repository → Run workflow), optionally naming a tag to
+# (re)ingest; blank means the newest published desktop release.
+#
+# What the `apt` release holds:
+#   unseen-media_<version>_amd64.deb    the newest KEEP versions (older ones pruned)
+#   Packages, Packages.gz, Release, Release.gpg, InRelease   the signed index
+#   unseen-media-archive-keyring.gpg / .asc                  the public key
+#   unseen-media.sources                                     the client config
+#
+# Clients (and the .deb's postinst) point at it as a flat repository:
+#   URIs:   https://github.com/Unseen-Media/unseen-desktop-releases/releases/download
+#   Suites: apt/
+# apt fetches <URI>/apt/InRelease and <URI>/apt/<name>.deb, which are exactly
+# the download URLs of assets on the release tagged `apt`. See
+# scripts/build-apt-repo.sh for the index itself.
+#
+# The `apt` release is created as a pre-release with latest=false so that
+# /releases/latest/download/<asset> keeps pointing at the newest desktop
+# release — the Discord announcer and README depend on that.
+#
+# Secret: APT_SIGNING_KEY — the armored private signing key, created by
+# scripts/new-signing-key.sh (backup in ~/.unseen/ on the dev box).
+name: APT repository
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Desktop release tag to ingest (e.g. v2.6.7). Blank = newest published release."
+        required: false
+        type: string
+        default: ""
+
+permissions:
+  contents: write
+
+# Two releases published back to back must not race over the index.
+concurrency:
+  group: apt-repo
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  APT_TAG: apt
+  KEEP: "5"            # versions kept in the pool; apt only ever installs the newest
+  DEB_ASSET: UnseenMedia-linux-amd64.deb
+  GH_TOKEN: ${{ github.token }}
+
+jobs:
+  pick:
+    # Decide which desktop release to ingest, and skip cleanly when there is
+    # nothing to do (a non-v tag such as `apt` itself, a draft, or a release
+    # without a .deb).
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      tag: ${{ steps.pick.outputs.tag }}
+      skip: ${{ steps.pick.outputs.skip }}
+    steps:
+      - id: pick
+        env:
+          EVENT_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: |
+          tag="${INPUT_TAG:-$EVENT_TAG}"
+          if [ -z "$tag" ]; then
+            tag=$(gh release list -R "$GITHUB_REPOSITORY" --exclude-drafts --exclude-pre-releases \
+                    --json tagName --jq '[.[] | select(.tagName | test("^v[0-9]"))][0].tagName')
+          fi
+          skip() { echo "$1"; echo "skip=true" >> "$GITHUB_OUTPUT"; exit 0; }
+          case "$tag" in
+            v[0-9]*) ;;
+            *) skip "tag '$tag' is not a desktop release (v…) — nothing to do" ;;
+          esac
+          info=$(gh release view "$tag" -R "$GITHUB_REPOSITORY" --json isDraft,assets)
+          [ "$(jq -r .isDraft <<<"$info")" = "false" ] || skip "$tag is a draft — nothing to do"
+          jq -e --arg a "$DEB_ASSET" '.assets[] | select(.name == $a)' <<<"$info" >/dev/null \
+            || skip "$tag has no $DEB_ASSET — nothing to do"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "ingesting $tag"
+
+  publish:
+    needs: pick
+    if: needs.pick.outputs.skip != 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      TAG: ${{ needs.pick.outputs.tag }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Import the signing key
+        env:
+          APT_SIGNING_KEY: ${{ secrets.APT_SIGNING_KEY }}
+        run: |
+          if [ -z "$APT_SIGNING_KEY" ]; then
+            echo "::error::the APT_SIGNING_KEY secret is not set — run scripts/new-signing-key.sh"
+            exit 1
+          fi
+          gpg --batch --import <<<"$APT_SIGNING_KEY"
+          fpr=$(gpg --batch --with-colons --list-secret-keys | awk -F: '/^fpr/ {print $10; exit}')
+          [ -n "$fpr" ] || { echo "::error::no secret key imported"; exit 1; }
+          echo "KEY_ID=$fpr" >> "$GITHUB_ENV"
+          echo "signing with $fpr"
+
+      - name: Fetch the .deb and name it by its version
+        run: |
+          mkdir -p incoming repo/apt
+          gh release download "$TAG" -R "$GITHUB_REPOSITORY" -p "$DEB_ASSET" -D incoming
+          version=$(dpkg-deb -f "incoming/$DEB_ASSET" Version)
+          [ -n "$version" ] || { echo "::error::could not read Version from the .deb"; exit 1; }
+          mv "incoming/$DEB_ASSET" "repo/apt/unseen-media_${version}_amd64.deb"
+          echo "VERSION=$version" >> "$GITHUB_ENV"
+          echo "pooled $TAG as unseen-media_${version}_amd64.deb"
+
+      - name: Make sure the `apt` release exists (pre-release, never "latest")
+        run: |
+          if gh release view "$APT_TAG" -R "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "release '$APT_TAG' exists"; exit 0
+          fi
+          gh release create "$APT_TAG" -R "$GITHUB_REPOSITORY" \
+            --title "APT repository (do not delete)" --prerelease --latest=false \
+            --notes-file - <<'EOF'
+          This is not a version of the app — it is the **APT repository** that keeps
+          Linux installs up to date. Its assets are the signed package index plus the
+          newest few `.deb` builds, maintained by the *APT repository* workflow.
+
+          Looking for a download? Use the [latest release](https://github.com/Unseen-Media/unseen-desktop-releases/releases/latest)
+          or the [README](https://github.com/Unseen-Media/unseen-desktop-releases#readme).
+
+          Deleting this release breaks updates for every Linux install.
+          EOF
+          echo "created release '$APT_TAG'"
+
+      - name: Add the .deb to the pool
+        run: |
+          gh release upload "$APT_TAG" -R "$GITHUB_REPOSITORY" --clobber \
+            "repo/apt/unseen-media_${VERSION}_amd64.deb"
+
+      - name: Prune the pool to the newest versions
+        run: |
+          mapfile -t versions < <(
+            gh release view "$APT_TAG" -R "$GITHUB_REPOSITORY" --json assets \
+              --jq '.assets[].name | select(test("^unseen-media_.+_amd64\\.deb$"))' \
+            | sed -E 's/^unseen-media_(.+)_amd64\.deb$/\1/' | sort -V)
+          n=${#versions[@]}
+          echo "pool: ${versions[*]} (keeping newest $KEEP)"
+          if [ "$n" -gt "$KEEP" ]; then
+            for v in "${versions[@]:0:$((n - KEEP))}"; do
+              echo "pruning unseen-media_${v}_amd64.deb"
+              gh release delete-asset "$APT_TAG" "unseen-media_${v}_amd64.deb" -R "$GITHUB_REPOSITORY" -y
+            done
+          fi
+
+      - name: Mirror the pool locally
+        # The one we just uploaded is already in repo/apt; fetch the rest.
+        run: |
+          gh release download "$APT_TAG" -R "$GITHUB_REPOSITORY" \
+            -p 'unseen-media_*_amd64.deb' -D repo/apt --skip-existing
+          ls -l repo/apt/*.deb
+
+      - name: Build and sign the index
+        run: scripts/build-apt-repo.sh repo "$KEY_ID"
+
+      - name: Upload the index
+        # Everything InRelease refers to goes up first; InRelease itself last,
+        # so a client that updates mid-publish never sees an index pointing at
+        # a Packages file that is not there yet.
+        run: |
+          cp unseen-media.sources repo/apt/
+          cd repo/apt
+          gh release upload "$APT_TAG" -R "$GITHUB_REPOSITORY" --clobber \
+            unseen-media-archive-keyring.gpg unseen-media-archive-keyring.asc \
+            unseen-media.sources Packages Packages.gz Release.gpg Release
+          gh release upload "$APT_TAG" -R "$GITHUB_REPOSITORY" --clobber InRelease
+
+      - name: Verify with a real apt
+        # Configure this runner exactly the way the .deb's postinst configures
+        # a client, then make apt fetch the index from GitHub and check that
+        # the newest pooled version is what it would install.
+        run: |
+          sudo install -m 0644 repo/apt/unseen-media-archive-keyring.gpg \
+            /usr/share/keyrings/unseen-media-archive-keyring.gpg
+          sudo install -m 0644 unseen-media.sources /etc/apt/sources.list.d/unseen-media.sources
+          newest=$(ls repo/apt/unseen-media_*_amd64.deb | sed -E 's/.*unseen-media_(.+)_amd64\.deb$/\1/' | sort -V | tail -1)
+          for attempt in 1 2 3 4 5; do
+            if sudo apt-get update \
+                 -o Dir::Etc::sourcelist=/etc/apt/sources.list.d/unseen-media.sources \
+                 -o Dir::Etc::sourceparts=- -o APT::Get::List-Cleanup=0; then
+              break
+            fi
+            echo "apt-get update failed (attempt $attempt) — assets may still be propagating"; sleep 15
+            [ "$attempt" -lt 5 ] || exit 1
+          done
+          apt-cache policy unseen-media
+          candidate=$(apt-cache policy unseen-media | awk '/Candidate:/ {print $2}')
+          if [ "$candidate" != "$newest" ]; then
+            echo "::error::apt would install $candidate but the pool's newest is $newest"; exit 1
+          fi
+          echo "apt sees unseen-media $candidate from the GitHub-hosted repository"

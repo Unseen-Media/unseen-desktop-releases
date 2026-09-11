@@ -1,0 +1,11 @@
+# Unseen Media desktop client — package repository.
+# Installed by the unseen-media package so new versions arrive through the
+# system updater. To stop the package from managing this file, set
+# manage_apt_repo="false" in /etc/default/unseen-media.
+# https://github.com/Unseen-Media/unseen-desktop-releases#readme
+# (An identical copy lives in unseen-desktop/packaging/ — change both.)
+Types: deb
+URIs: https://github.com/Unseen-Media/unseen-desktop-releases/releases/download
+Suites: apt/
+Architectures: amd64
+Signed-By: /usr/share/keyrings/unseen-media-archive-keyring.gpg
