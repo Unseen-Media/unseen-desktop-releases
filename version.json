@@ -1,7 +1,7 @@
 {
-  "version": "2.6.7",
-  "notes": "- **Linux: playback works on a fresh machine.** Starting a video on some Linux\n  installs failed with a \"Could not load libmpv-2.dll\" message asking you to go\n  download the playback engine yourself \u2014 which was both wrong and impossible\n  to act on, since that file is a Windows one. The app has always carried its\n  own engine; it just wasn't looking for it in the right place. It now uses the\n  copy it ships with, so nothing needs installing alongside it. Windows was\n  never affected.\n\n---\nWindows updates itself on the next launch. On Linux, download the `.deb` below and reinstall it \u2014 auto-update is Windows-only for now.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.7/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.7/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.7/UnseenMedia-linux-amd64.deb"
+  "version": "2.6.8",
+  "notes": "- **Linux: updates now arrive through your system updater.** Installing this\n  version registers the Unseen Media package repository on your machine, so\n  from now on new versions show up in Software Updater / Update Manager next\n  to everything else \u2014 no more downloading the .deb by hand. This one last\n  time you do need to download and install it yourself. Windows is unchanged.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.8/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.8/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.6.8/UnseenMedia-linux-amd64.deb"
 }
