@@ -1,7 +1,7 @@
 {
-  "version": "2.7.7",
-  "notes": "- **\"I haven't watched it yet\" on Home.** If something turns up in \"Rate what\n  you watched\" that you didn't actually watch, one click removes it from the\n  list and stops it counting as watched.\n- **Mark a whole season watched at once.** On a series, each season now has a\n  \"Mark season watched\" button that ticks off every episode in that season \u2014\n  and flips to \"Unmark season\" once the whole season is watched.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.7/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.7/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.7/UnseenMedia-linux-amd64.deb"
+  "version": "2.7.8",
+  "notes": "- **Tidy \"Jump back in\" without losing your place.** The remove button on a\n  Home \"Jump back in\" card now just takes it off that row \u2014 your spot in the\n  episode or movie is kept and it stays in Continue Watching (the remove button\n  on the Continue Watching page still clears it as before). Watch more of\n  something you tidied away and it comes back. Your tidied list follows you\n  across devices.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-linux-amd64.deb"
 }
