@@ -1,7 +1,7 @@
 {
-  "version": "2.7.3",
-  "notes": "- **Fixed: adding a new season of a show you already have.** The \"already in\n  your library\" check was too eager and flagged any show with a matching title\n  \u2014 so adding, say, Season 3 of an anime you have Seasons 1\u20132 of was wrongly\n  blocked. It now only flags a real duplicate: a movie you already have, or a\n  season that's actually already in your library.\n- Simplified the Suggestions/Fixes types to **Suggestion** and **Bug**.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.3/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.3/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.3/UnseenMedia-linux-amd64.deb"
+  "version": "2.7.4",
+  "notes": "- **Better bug reports.** When you report a bug under Suggestions / Fixes, you\n  can now say where it happened and what you were doing right before \u2014 and if\n  the app crashed, froze, or closed itself, tick the box and it attaches the\n  details automatically. The more it knows, the faster it gets fixed.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.4/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.4/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.4/UnseenMedia-linux-amd64.deb"
 }
