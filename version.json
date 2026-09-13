@@ -1,7 +1,7 @@
 {
-  "version": "2.7.8",
-  "notes": "- **Tidy \"Jump back in\" without losing your place.** The remove button on a\n  Home \"Jump back in\" card now just takes it off that row \u2014 your spot in the\n  episode or movie is kept and it stays in Continue Watching (the remove button\n  on the Continue Watching page still clears it as before). Watch more of\n  something you tidied away and it comes back. Your tidied list follows you\n  across devices.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.8/UnseenMedia-linux-amd64.deb"
+  "version": "2.7.9",
+  "notes": "- **(Admin) Refresh library metadata on demand.** In Settings, under\n  \"Server & health\", a \"Refresh now\" button fills in any missing episode\n  titles, descriptions and thumbnails without waiting for the nightly pass.\n- **(Admin) Low-storage warning.** When the server's disk gets close to full\n  (85%), the admin sees a red alert across the top of the app \u2014 with \"Don't\n  show again\" to silence it, or close it just for this session.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.9/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.9/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.9/UnseenMedia-linux-amd64.deb"
 }
