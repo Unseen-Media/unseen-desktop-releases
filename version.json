@@ -1,7 +1,7 @@
 {
-  "version": "2.7.11",
-  "notes": "- **Linux: the video plays inside the app again.** On Ubuntu and other Wayland\n  desktops the picture could still open in a second, floating window \u2014 which\n  also left the player's own controls and the fullscreen button with nothing to\n  act on. The app now pins the picture to its own window instead of leaving it\n  to the playback engine to decide, so the video stays where it belongs.\n  Windows was never affected.\n- **(Admin) A tidier Auto-fix activity list.** A run that proposed a fix now\n  reads \"solved\" in green, the same as one already shipped \u2014 red is kept for a\n  run that actually failed. Every entry starts folded to a single line, too:\n  click one to open its summary, release link and run log.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.11/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.11/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.11/UnseenMedia-linux-amd64.deb"
+  "version": "2.7.12",
+  "notes": "- **The player's bars no longer pause the film.** Clicking an empty spot on the\n  faded bar at the top of the player, or on the control bar along the bottom,\n  paused or resumed playback as if you had clicked the picture itself \u2014 easy to\n  trigger when reaching for a button and missing it slightly. Those bars now\n  keep the click to themselves; clicking the video still plays and pauses, and\n  double-clicking it still goes fullscreen.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.12/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.12/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.7.12/UnseenMedia-linux-amd64.deb"
 }
