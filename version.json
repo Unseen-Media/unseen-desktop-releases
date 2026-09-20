@@ -1,7 +1,7 @@
 {
-  "version": "2.8.1",
-  "notes": "- **The real fix for the random crashes.** We found the true cause: the app\n  made several web requests at once over a single connection that wasn't safe\n  to share between them, which could corrupt memory and close the app at\n  random \u2014 ticking a suggestion, opening a page, loading thumbnails, anything.\n  Those requests are now handled one-at-a-time behind the scenes, so the\n  overlap that caused the crashes can't happen. (Last week's engine change\n  helped, but this was the underlying cause.)\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.1/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.1/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.1/UnseenMedia-linux-amd64.deb"
+  "version": "2.8.2",
+  "notes": "- **Pick a playback speed from a list.** The speed button in the player used to\n  step through the speeds one click at a time \u2014 to get from 1\u00d7 to 2\u00d7 you had to\n  click it four times. It now opens a small menu above the button with every\n  speed in it (Normal, 1.25\u00d7, 1.5\u00d7, 1.75\u00d7, 2\u00d7) and a tick next to the one\n  you're on, so you can jump straight to the one you want.\n- **(Admin) A real delete button in Suggestions / Fixes.** The button that\n  removes a message was too narrow for the X it was meant to show, so it came\n  out as a faint dot. It's now a bin icon.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-linux-amd64.deb"
 }
