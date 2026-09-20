@@ -1,7 +1,7 @@
 {
-  "version": "2.8.2",
-  "notes": "- **Pick a playback speed from a list.** The speed button in the player used to\n  step through the speeds one click at a time \u2014 to get from 1\u00d7 to 2\u00d7 you had to\n  click it four times. It now opens a small menu above the button with every\n  speed in it (Normal, 1.25\u00d7, 1.5\u00d7, 1.75\u00d7, 2\u00d7) and a tick next to the one\n  you're on, so you can jump straight to the one you want.\n- **(Admin) A real delete button in Suggestions / Fixes.** The button that\n  removes a message was too narrow for the X it was meant to show, so it came\n  out as a faint dot. It's now a bin icon.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.2/UnseenMedia-linux-amd64.deb"
+  "version": "2.8.3",
+  "notes": "- **Another crash fixed \u2014 this one after a video ends.** When you finished\n  watching something, or left the player to browse or rate, the playback engine\n  kept running in the background with nothing to play \u2014 and could crash the app\n  a while later, even while you were just sitting in a menu with no video. The\n  app now fully shuts that engine down the moment you leave the player, so\n  nothing's left lingering to crash.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.3/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.3/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.8.3/UnseenMedia-linux-amd64.deb"
 }
