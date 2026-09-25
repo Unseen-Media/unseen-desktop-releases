@@ -1,7 +1,7 @@
 {
-  "version": "2.9.1",
-  "notes": "- **Search results stick to things you can actually watch.** Searching a title\n  like \"Dune\" in Add media used to bring back the PC game, the novel and the\n  soundtrack alongside the film \u2014 none of which the app can play. Those are now\n  left out, with a short note under the search box saying how many were skipped,\n  so the list is only films, series, anime and documentaries.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.1/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.1/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.1/UnseenMedia-linux-amd64.deb"
+  "version": "2.9.2",
+  "notes": "- **(Linux) The player controls hide again when you move to another screen.**\n  If you slid the mouse off the video onto a second monitor and carried on\n  working there, the title bar and the playback controls stayed on screen over\n  the film for as long as you kept moving. They now fade away a couple of\n  seconds after the pointer leaves the video, the same as they do when it sits\n  still.\n- **(Linux) The screen no longer blanks in the middle of a film.** On Ubuntu\n  and other Linux desktops the screen could dim and lock while a video was\n  playing, because the desktop never heard that anything was going on. The\n  player now tells it directly, and stops as soon as you pause or leave the\n  player, so the screen still sleeps normally the rest of the time.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.2/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.2/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.9.2/UnseenMedia-linux-amd64.deb"
 }
