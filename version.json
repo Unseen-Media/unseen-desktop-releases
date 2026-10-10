@@ -1,7 +1,7 @@
 {
-  "version": "2.13.1",
-  "notes": "- **Fixed a crash on the Ratings page.** With 2.13's new Extras, opening\n  **Ratings** \u2014 or rating a series that had an Extras tab \u2014 could close the app.\n  Fixed.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.1/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.1/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.1/UnseenMedia-linux-amd64.deb"
+  "version": "2.13.2",
+  "notes": "- **Rating a movie is a quick pop-up now.** Hitting **Rate** on a movie opens a\n  small rating box right there instead of throwing you over to the Ratings page.\n- **The Ratings page opens at the top** again, instead of jumping to the bottom.\n- **Tidier Rate button.** A movie you've already rated shows a single star with\n  your score, not two.\n- **Movie lengths are back.** Recently added movies that had lost their runtime\n  now show it again, and new ones fill in on their own.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.2/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.2/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.13.2/UnseenMedia-linux-amd64.deb"
 }
