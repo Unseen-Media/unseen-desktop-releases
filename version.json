@@ -1,7 +1,7 @@
 {
-  "version": "2.16.1",
-  "notes": "- **Edit info no longer moves a title out of its section.** If a title sat in a\n  section the editor didn't list \u2014 Documentary, say \u2014 opening **Edit info**\n  showed \"TV Show\" instead, so saving a small change (a typo, a new poster)\n  quietly filed the title under TV Shows and moved its files on the server. The\n  editor now shows the section the title is actually in, and leaves it alone\n  unless you change it yourself.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.1/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.1/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.1/UnseenMedia-linux-amd64.deb"
+  "version": "2.16.2",
+  "notes": "- **Search no longer crashes after the second letter.** Typing two or more\n  letters into search (Ctrl+K) could stop the app with an \"unexpected error\"\n  and leave the results drawn on top of each other. It happened whenever a\n  show in the library had extras (OVAs, specials). Search now finds those\n  extras like any other episode.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.2/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.2/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.2/UnseenMedia-linux-amd64.deb"
 }
