@@ -1,7 +1,7 @@
 {
-  "version": "2.16.9",
-  "notes": "- **Encrypted connection.** The app now talks to the server over HTTPS, so your login and everything you watch travel encrypted. Nothing to change on your side.\n- **Linux:** this version comes with a new update key. Install this `.deb` once by hand; after that, updates work through your system updater again.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
-  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.9/UnseenMedia-Setup.exe",
-  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.9/UnseenMedia-win64.zip",
-  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.16.9/UnseenMedia-linux-amd64.deb"
+  "version": "2.17.0",
+  "notes": "- **Skip the filler.** Anime episodes are now marked as **Filler**, **Mixed**\n  (part story, part filler) or **Anime canon** (story the anime added), so you\n  can see at a glance which ones you can skip. Episodes that follow the manga\n  carry no mark.\n- **Choose your way to watch.** A show that has filler gets a **Way to watch**\n  card on its page: **Every episode**, **No filler**, **Canon only** or\n  **Manga canon only**. Your choice is saved for you alone, per show.\n- **Play, Next and Up next follow your choice.** Play picks up at the next\n  episode you want, Next and Previous step over the skipped ones (the Up next\n  card says what it skips, like \"Skips 57\u201371 \u00b7 filler\"), and **Next Up** on\n  Home does the same. Skipped episodes are dimmed on the show's page but still\n  play when you click them, and an episode you're halfway through always\n  resumes.\n\n---\nWindows updates itself on the next launch. Linux updates through your system updater if you installed 2.6.8 or newer; if you are on an older version, download the `.deb` below and install it once more.\n\n\ud83e\udd16 Generated with [Claude Code](https://claude.com/claude-code)",
+  "url": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.17.0/UnseenMedia-Setup.exe",
+  "zip": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.17.0/UnseenMedia-win64.zip",
+  "deb": "https://github.com/Unseen-Media/unseen-desktop-releases/releases/download/v2.17.0/UnseenMedia-linux-amd64.deb"
 }
